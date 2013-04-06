@@ -24,5 +24,8 @@ set noeb
 autocmd FileType c,cpp,java,php,py autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType py set noexpandtab
 
+filetype plugin on
+
+" import pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
