@@ -21,7 +21,9 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " set vb t_vb=
 set noeb 
 
-autocmd FileType c,cpp,java,php,py autocmd BufWritePre <buffer> :%s/\s\+$//e
+" clear any blank char at the end of a line
+autocmd FileType c,cpp,java,php,py,cu autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 autocmd FileType py set noexpandtab
 
 filetype plugin on
@@ -29,3 +31,13 @@ filetype plugin on
 " import pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
+  endif
+endfunction
