@@ -41,3 +41,5 @@ function! LoadCscope()
     set cscopeverbose
   endif
 endfunction
+
+execute LoadCscope()
