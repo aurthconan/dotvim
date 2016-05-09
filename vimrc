@@ -22,7 +22,10 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 set noeb 
 
 " clear any blank char at the end of a line
-autocmd FileType c,cpp,java,php,py,cu autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,py,cu autocmd BufWritePre <buffer>
+    \ if !&diff && (v:progname !~"diff") |
+    \ :%s/\s\+$//e |
+    \ endif
 
 autocmd FileType py set noexpandtab
 
