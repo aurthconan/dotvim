@@ -4,6 +4,7 @@ set nu
 set hlsearch
 
 set nobackup
+set noundofile
 set noswapfile
 
 colorscheme evening
@@ -17,15 +18,17 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 
+set diffopt+=iwhite
+
 nnoremap <silent> <F8> :TlistToggle<CR>
 " set vb t_vb=
 set noeb 
 
 " clear any blank char at the end of a line
-autocmd FileType c,cpp,java,php,py,cu autocmd BufWritePre <buffer>
-    \ if !&diff && (v:progname !~"diff") |
-    \ :%s/\s\+$//e |
-    \ endif
+"autocmd FileType c,cpp,java,php,py,cu autocmd BufWritePre <buffer>
+"    \ if !&diff && (v:progname !~"diff") |
+"    \ :%s/\s\+$//e |
+"    \ endif
 
 autocmd FileType py set noexpandtab
 
